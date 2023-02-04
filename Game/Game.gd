@@ -13,12 +13,8 @@ var needRestart = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var plant = enemyPlant.instance()
-	var player = playerProp.instance()
-	plant.PLAYER = player
+	player = playerProp.instance()
 	player.position = Vector2(200, 200)
-	plant.position = Vector2(1000, 600)
-	add_child(plant)
 	add_child(player)
 	
 	var baseMapName = "map1"

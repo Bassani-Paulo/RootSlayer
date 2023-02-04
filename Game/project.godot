@@ -18,6 +18,10 @@ config/name="Root Slayer"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[mono]
+
+project/assembly_name="Root Slayer"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

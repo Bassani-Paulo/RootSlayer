@@ -1,7 +1,7 @@
 extends Node2D
 
 # Declare member variables here. Examples:
-const speed = 240
+const speed = 360
 const type = "player"
 var teste = 0
 var axe = preload("res://Gun.tscn")
@@ -9,13 +9,13 @@ func _ready():
 	pass
 
 func _process(delta):
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		self.position.x -= speed * delta
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		self.position.x += speed * delta
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		self.position.y -= speed * delta
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		self.position.y += speed * delta
 
 func _on_Area2D_area_entered(area):

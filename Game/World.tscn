@@ -12,14 +12,14 @@ anchor_bottom = 1.0
 script = ExtResource( 5 )
 
 [node name="SceneContainer" type="MarginContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 510.0
+margin_right = 1920.0
+margin_bottom = 990.0
 size_flags_vertical = 3
 
 [node name="ButtonContainer" type="MarginContainer" parent="."]
-margin_top = 514.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_top = 994.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 custom_constants/margin_right = 80
 custom_constants/margin_top = 20
 custom_constants/margin_left = 80

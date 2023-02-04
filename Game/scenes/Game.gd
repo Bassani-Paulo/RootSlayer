@@ -17,17 +17,6 @@ func loadFile(fileName : String):
 	file.close()
 	return content
 
-func action(object):
-	if object.name.count("Drums"):
-		var scene = load("res://objects/Hole.tscn");
-		var instance = scene.instance();
-		self.add_child(instance);
-		var coord = object.position
-		instance.position = coord
-		Global.coordToObject.erase(object)
-		Global.coordToObject[coord] = instance
-		return true
-
 func loadJsonFile(fileName : String):
 	var file = File.new()
 	file.open(fileName, File.READ)
@@ -45,7 +34,13 @@ func parseObject(coord : Vector2, object : String):
 		self.add_child(instance);
 		instance.position = coord
 		Global.coordToObject[coord] = instance
-	elif object == '1' || object == '2':
+	elif object == ' ':
+		var scene = load("res://objects/Grass.tscn");
+		var instance = scene.instance();
+		self.add_child(instance);
+		instance.position = coord
+		Global.coordToObject[coord] = instance
+	elif object == 'P':
 		var scene = load("res://objects/Player.tscn");
 		var instance = scene.instance();
 		instance.connect("change_scene", self, "change_scene")
@@ -53,9 +48,6 @@ func parseObject(coord : Vector2, object : String):
 		instance.Game = self
 		self.add_child(instance);
 		instance.position = coord
-		instance.Drums = $Drums
-		if object == '1':
-			instance.reflect = true
 		Global.coordToObject[coord] = instance
 
 func change_scene(sceneType):
@@ -85,10 +77,20 @@ func buildMap(map):
 			continue
 		parseObject(Vector2(i, j), map[h])
 		i += 1
+	Global.curH = i + 1
+	Global.maxH = Global.curH
+	Global.curL = len(map)
+	Global.maxL = Global.curL
 	Global.running = true
 
 func _init():
 	print('Running')
+	
+func _process(delta):
+	if Global.running:
+		Global.timeRunning += 1
+		if Global.timeRunning % 10 == 0:
+			Global.curH
 	
 func _ready():
 	var baseMapName = "map1"
@@ -102,11 +104,9 @@ func _ready():
 	offset.y = (rect.size.y - Global.movementLength *rows + $GUI.get_size().y) / 2.0
 	
 	buildMap(mapFile)
-	var jsonFile = loadJsonFile("res://maps/" + baseMapName + "_extras.json")
+	#var jsonFile = loadJsonFile("res://maps/" + baseMapName + "_extras.json")
 	
 	$GUI.hide_level_completed_label()
 	$GUI.hide_level_failed_label()
 	$GUI.set_level_name("Level " + str(curLevel + 1))
 	$GUI.show()
-	
-	

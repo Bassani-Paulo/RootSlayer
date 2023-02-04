@@ -20,13 +20,18 @@ _global_script_class_icons={
 
 [application]
 
-config/name="magia-fajro"
+config/name="Root Slayer"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://Global.tscn"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
 
 [input]
 

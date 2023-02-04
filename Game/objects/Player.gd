@@ -7,7 +7,6 @@ var velocity : Vector2 = Vector2()
 var isAlive : bool = true
 var GUI = null
 var finished: bool = false
-var Drums = null
 var walkingOver = null
 var Game = null
 
@@ -68,36 +67,5 @@ func _physics_process(_delta):
 	if self.reflect:
 		dir.x *= -1
 	var destPosition = self.position +  dir * Global.movementLength
-	if (destPosition in Global.coordToObject):
-		var whatIsAhead = Global.coordToObject[destPosition]
-		if whatIsAhead.name.count('Player') > 0:
-			pass
-		elif whatIsAhead.name.count('Wall') > 0:
-			pass
-		elif whatIsAhead.name.count('Hole') > 0:
-			_killPlayer()
-		elif whatIsAhead.name.count('Bell') > 0:
-			_finish()
-		elif whatIsAhead.name.count('Piano') > 0:
-			whatIsAhead.play(Game)
-		elif whatIsAhead.name.count('Drums') > 0:
-			whatIsAhead.play(Game)
-			var destObject = Global.coordToObject[destPosition]
-			_updatePlayerPosition(destPosition)
-			self.walkingOver = destObject
-		elif whatIsAhead.name.count('Tuner') > 0:
-			whatIsAhead.play(Game)
-		elif whatIsAhead.name.count('GuitarString') > 0:
-			whatIsAhead.play(Game)
-			var jumpPosition : Vector2 = destPosition + whatIsAhead.getJump()
-			if (jumpPosition in Global.coordToObject):
-				var whatIsAtJumpPosition = Global.coordToObject[jumpPosition]
-				if whatIsAtJumpPosition.name.count('Bell') > 0:
-					_finish()
-				else:
-					_killPlayer()
-			else:
-				_updatePlayerPosition(jumpPosition)
-	else:
-		_updatePlayerPosition(destPosition)
+	_updatePlayerPosition(destPosition)
 	

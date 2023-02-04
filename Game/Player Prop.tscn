@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player Prop.gd" type="Script" id=1]
 [ext_resource path="res://resources/sprites/lumberjack/front_idle.png" type="Texture" id=2]
-[ext_resource path="res://sounds/lenhador morrendo.wav" type="AudioStream" id=3]
-[ext_resource path="res://sounds/lenhador ataque hit.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
@@ -22,10 +20,4 @@ scale = Vector2( 0.2, 0.2 )
 scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
-[node name="HitSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-
-[node name="DeathSound" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 3 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -3,7 +3,6 @@ extends Node2D
 # Declare member variables here. Examples:
 const speed = 240
 const type = "player"
-var teste = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,10 +25,8 @@ func _process(delta):
 
 
 func _on_Area2D_area_entered(area):
-	print(teste)
-	teste += 1
 	if area.get_parent().type == "enemy":
 		get_tree().reload_current_scene()
 	elif area.get_parent().type == "root":
-		print("kill")
+		area.get_parent().get_parent().queue_free()
 	pass # Replace with function body.pass # Replace with function body.

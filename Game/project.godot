@@ -18,6 +18,11 @@ config/name="Root Slayer"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

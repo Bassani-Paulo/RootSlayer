@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/front_run1.png-7da2dd38ef5617b1fa4fb64293d96db4.stex"
+path="res://.import/run1.png-a7dca2890c417c277ea94a818673a57a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/lumberjack/front_run1.png"
-dest_files=[ "res://.import/front_run1.png-7da2dd38ef5617b1fa4fb64293d96db4.stex" ]
+source_file="res://resources/sprites/lumberjack/run1.png"
+dest_files=[ "res://.import/run1.png-a7dca2890c417c277ea94a818673a57a.stex" ]
 
 [params]
 

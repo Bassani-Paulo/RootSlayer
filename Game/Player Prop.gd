@@ -5,10 +5,14 @@ const speed = 240
 const type = "player"
 var teste = 0
 var axe = preload("res://Gun.tscn")
+var actual_position = 0
+
 func _ready():
-	pass
+	self.get_child(0).animation = "run"
+	self.actual_position = self.position
 
 func _process(delta):
+	change_animation()
 	if Input.is_action_pressed("ui_left"):
 		self.position.x -= speed * delta
 	if Input.is_action_pressed("ui_right"):
@@ -33,3 +37,10 @@ func _on_Area2D_area_entered(area):
 		personal_axe.position.y = -400
 	else:
 		pass
+
+func change_animation():
+	if self.position != actual_position:
+		actual_position = self.position
+		self.get_child(0).animation = "run"
+	else:
+		self.get_child(0).animation = "idle"

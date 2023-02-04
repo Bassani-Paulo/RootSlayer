@@ -53,7 +53,6 @@ func loadFile(fileName : String):
 	var file = File.new()
 	file.open(fileName, File.READ)
 	var content = file.get_as_text()
-	print(content)
 	file.close()
 	return content
 	

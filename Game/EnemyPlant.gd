@@ -1,10 +1,13 @@
 extends Node2D
 
+const ACCEL = 0.025
+
 const type = "enemy"
 var PLAYER: Node2D
 var playerPosition: Vector2
 const SPEED = 240
 
+var velocity = Vector2(0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +19,9 @@ func _ready():
 func _process(delta):
 	var distance = PLAYER.position - self.position
 	var direction = distance/sqrt(pow(distance.x, 2) + pow(distance.y, 2))
-	self.position += direction*SPEED*delta
-	look_at(PLAYER.position)
+	
+	velocity = velocity.linear_interpolate(direction * SPEED, ACCEL)
+	
+	self.position += velocity*delta
+	look_at(position + velocity)
 	pass

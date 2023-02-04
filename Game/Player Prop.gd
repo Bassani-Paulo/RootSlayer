@@ -22,14 +22,14 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 
-
-
-
 func _on_Area2D_area_entered(area):
 	print(teste)
 	teste += 1
 	if area.get_parent().type == "enemy":
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 	elif area.get_parent().type == "root":
 		print("kill")
+	elif area.get_parent().type == "glass":
+		print("oi")
 	pass # Replace with function body.pass # Replace with function body.

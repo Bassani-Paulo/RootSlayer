@@ -1,0 +1,19 @@
+{
+  "GuitarString": {
+    "position": {
+      "x": 5,
+      "y": 5
+    },
+    "intensity": 4,
+    "rotation": "LEFT"
+  },
+  "Tuner": {
+    "position": {
+      "x": 11,
+      "y": 9
+    }
+  },
+  "sounds":{
+  	"type": 1
+  }
+}

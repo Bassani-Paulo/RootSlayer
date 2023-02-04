@@ -1,0 +1,238 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/GUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/label_HP_bg.png" type="Texture" id=2]
+[ext_resource path="res://styles/icon_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/fonts/montreal/Montreal-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/ui/LevelCompletedMessage.gd" type="Script" id=6]
+[ext_resource path="res://scenes/HelpButton.gd" type="Script" id=7]
+[ext_resource path="res://scenes/ui/Help.tscn" type="PackedScene" id=8]
+[ext_resource path="res://styles/style_button_hover.tres" type="StyleBox" id=9]
+[ext_resource path="res://styles/style_button_normal.tres" type="StyleBox" id=10]
+[ext_resource path="res://styles/style_button_pressed.tres" type="StyleBox" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 15
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[node name="GUI" type="CanvasLayer"]
+offset = Vector2( 70, -10 )
+scale = Vector2( 0.8, 0.8 )
+transform = Transform2D( 0.8, 0, 0, 0.8, 70, -10 )
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+anchor_right = 1.0
+margin_bottom = 119.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Background" type="NinePatchRect" parent="Control/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 99.0
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_right = 10
+
+[node name="Elements" type="MarginContainer" parent="Control/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 99.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Elements"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 974.0
+margin_bottom = 69.0
+
+[node name="HBoxLeft" type="HBoxContainer" parent="Control/MarginContainer/Elements/HBoxContainer"]
+margin_right = 480.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+
+[node name="HelpButton" type="Button" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft"]
+margin_right = 60.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 60, 0 )
+hint_tooltip = "Help"
+focus_mode = 0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 3 )
+text = "f"
+script = ExtResource( 7 )
+
+[node name="ResetButton" type="Button" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 60, 0 )
+hint_tooltip = "Reset"
+focus_mode = 0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 3 )
+text = "b"
+
+[node name="PrevLevelButton" type="Button" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft"]
+margin_left = 128.0
+margin_right = 188.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 60, 0 )
+hint_tooltip = "Previous Level"
+focus_mode = 0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 3 )
+text = "c"
+
+[node name="NextLevelButton" type="Button" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft"]
+margin_left = 192.0
+margin_right = 252.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 60, 0 )
+hint_tooltip = "Next Level"
+focus_mode = 0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 3 )
+text = "d"
+
+[node name="MenuButton" type="Button" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft"]
+margin_left = 256.0
+margin_right = 316.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 60, 0 )
+hint_tooltip = "Menu"
+focus_mode = 0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 3 )
+text = "e"
+
+[node name="HBoxMiddle" type="HBoxContainer" parent="Control/MarginContainer/Elements/HBoxContainer"]
+margin_left = 484.0
+margin_right = 964.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxLevelInfo" type="VBoxContainer" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle"]
+margin_right = 480.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 3
+
+[node name="LevelPackLabel" type="Label" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle/VBoxLevelInfo"]
+margin_right = 480.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Original + Extra"
+align = 1
+valign = 1
+
+[node name="LevelNameContainer" type="MarginContainer" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle/VBoxLevelInfo"]
+margin_top = 23.0
+margin_right = 480.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle/VBoxLevelInfo/LevelNameContainer"]
+margin_right = 480.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Level 100"
+align = 1
+valign = 1
+
+[node name="LevelFailedMessage" type="MarginContainer" parent="Control"]
+margin_top = 150.0
+margin_right = 1024.0
+margin_bottom = 186.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Control/LevelFailedMessage"]
+margin_right = 1024.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 1
+text = "Level Failed!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control/LevelFailedMessage"]
+
+[node name="LevelCompletedMessage" type="MarginContainer" parent="Control"]
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.25
+margin_bottom = 36.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Control/LevelCompletedMessage"]
+margin_right = 1024.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 1
+text = "Level Completed!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control/LevelCompletedMessage"]
+
+[node name="Instructions" parent="Control" instance=ExtResource( 8 )]
+visible = false
+custom_constants/margin_top = 250

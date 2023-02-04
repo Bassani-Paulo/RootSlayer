@@ -13,7 +13,12 @@ var needRestart = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = playerProp.instance()
+	var plant = enemyPlant.instance()
+	var player = playerProp.instance()
+	plant.PLAYER = player
+	player.position = Vector2(200, 200)
+	plant.position = Vector2(1000, 600)
+	add_child(plant)
 	add_child(player)
 	
 	var baseMapName = "map1"
@@ -23,8 +28,6 @@ func _ready():
 	var cols = lines[0].length()
 	var rect = get_viewport_rect()
 	offset = Vector2.ZERO
-	offset.x = (rect.size.x - Global.movementLength *cols) / 2.0
-	offset.y = (rect.size.y - Global.movementLength *rows) / 2.0
 	
 	buildMap(mapFile)
 
@@ -36,6 +39,7 @@ func parseObject(coord : Vector2, object : String):
 		var instance = scene.instance();
 		self.add_child(instance);
 		instance.position = coord
+		instance.z_index = -1
 		Global.coordToObject[coord] = instance
 	elif object == ' ':
 		var scene = load("res://objects/Grass.tscn");

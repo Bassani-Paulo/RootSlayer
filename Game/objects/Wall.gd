@@ -1,6 +1,6 @@
 extends Node2D
 
-const type = "grass"
+const type = "wall"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

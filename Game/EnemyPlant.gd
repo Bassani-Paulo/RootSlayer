@@ -17,4 +17,5 @@ func _process(delta):
 	var distance = PLAYER.position - self.position
 	var direction = distance/sqrt(pow(distance.x, 2) + pow(distance.y, 2))
 	self.position += direction*SPEED*delta
+	look_at(PLAYER.position)
 	pass

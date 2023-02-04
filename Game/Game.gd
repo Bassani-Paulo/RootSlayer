@@ -103,4 +103,3 @@ func _on_PlantSpawnTimer_timeout():
 			newPlant.position = Vector2(position, 1079)
 	newPlant.PLAYER = player
 	add_child(newPlant)
-	pass # Replace with function body.

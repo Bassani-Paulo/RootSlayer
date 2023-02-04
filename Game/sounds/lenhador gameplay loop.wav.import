@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lenhador gameplay loop.wav-f752fe78828a470efbc1c9341e37d0d8.sample"
+
+[deps]
+
+source_file="res://sounds/lenhador gameplay loop.wav"
+dest_files=[ "res://.import/lenhador gameplay loop.wav-f752fe78828a470efbc1c9341e37d0d8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

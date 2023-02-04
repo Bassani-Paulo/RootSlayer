@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lenhador dano2.wav-88932a7c1a496882cb23fbbe45b5655a.sample"
+
+[deps]
+
+source_file="res://sounds/lenhador dano2.wav"
+dest_files=[ "res://.import/lenhador dano2.wav-88932a7c1a496882cb23fbbe45b5655a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

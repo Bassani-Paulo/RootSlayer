@@ -18,12 +18,20 @@ func _process(delta):
 	if Input.is_action_pressed("ui_down"):
 		self.position.y += speed * delta
 
+func death_process():
+	$DeathSound.play()
+	get_tree().paused = true
+	yield(get_tree().create_timer(1), "timeout")
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	
 func _on_Area2D_area_entered(area):
 	if area.get_parent().type == "enemy":
-		get_tree().reload_current_scene()
+		death_process()
 	elif  area.get_parent().type == "wall":
-		get_tree().reload_current_scene()
+		death_process()
 	elif area.get_parent().type == "root":
+		$HitSound.play()
 		area.get_parent().get_parent().queue_free()
 	elif area.get_parent().type == "gun":
 		area.get_parent().queue_free()

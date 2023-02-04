@@ -2,7 +2,7 @@ extends Line2D
 
 const type = "root"
 
-const refreshRate = 6
+const refreshRate = 12
 var current = 0
 var head:Node2D
 

@@ -3,6 +3,7 @@ extends Node2D
 # Declare member variables here. Examples:
 var enemyPlant = preload("res://EnemyPlant.tscn")
 var playerProp = preload("res://Player Prop.tscn")
+var gunProp = preload("res://Gun.tscn")
 var plants: Array
 var player: Node2D
 
@@ -15,6 +16,9 @@ var needRestart = false
 func _ready():
 	player = playerProp.instance()
 	player.position = Vector2(200, 200)
+	var gun = gunProp.instance()
+	gun.position = Vector2(400, 400)
+	add_child(gun)
 	add_child(player)
 	
 	var baseMapName = "map1"

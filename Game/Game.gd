@@ -15,7 +15,7 @@ var needRestart = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = playerProp.instance()
-	player.position = Vector2(200, 200)
+	player.position = Vector2(960, 540)
 	var gun = gunProp.instance()
 	gun.position = Vector2(400, 400)
 	add_child(gun)

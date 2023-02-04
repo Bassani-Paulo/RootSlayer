@@ -1,12 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://resources/sprites/plant_head/plant_head_idle_readyToUse.png" type="Texture" id=1]
 [ext_resource path="res://EnemyPlant.gd" type="Script" id=2]
 [ext_resource path="res://Line2D.gd" type="Script" id=3]
 [ext_resource path="res://resources/sprites/tree_log.png" type="Texture" id=4]
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 31.0644
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 31.0644

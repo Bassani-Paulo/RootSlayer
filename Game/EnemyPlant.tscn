@@ -5,8 +5,9 @@
 [ext_resource path="res://Line2D.gd" type="Script" id=3]
 [ext_resource path="res://resources/sprites/tree_log.png" type="Texture" id=4]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 31.0644
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 20.0
+height = 42.0
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,6 +23,7 @@ script = ExtResource( 2 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="Line2D" type="Line2D" parent="."]

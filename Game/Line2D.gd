@@ -24,11 +24,14 @@ func _process(delta):
 		add_point(head.global_position)
 		var area = Area2D.new()
 		var colShape = CollisionShape2D.new()
-		var shape = CircleShape2D.new()
-		shape.radius = 5
+		var shape = CapsuleShape2D.new()
+		shape.radius = 10
+		shape.height = 40
 		colShape.shape = shape
+		colShape.rotation_degrees = 90
 		area.add_child(colShape)
 		area.position = head.global_position
+		area.look_at(get_parent().PLAYER.position)
 		add_child(area)
 	current+=1
 	pass

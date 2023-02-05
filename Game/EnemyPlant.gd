@@ -17,11 +17,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var overlapingAreas = get_node("Area2D").get_overlapping_areas()
 	var distance = PLAYER.position - self.position
 	var direction = distance/sqrt(pow(distance.x, 2) + pow(distance.y, 2))
 	
-	velocity = velocity.linear_interpolate(direction * SPEED, ACCEL)
+	for area in overlapingAreas:
+		if area.get_parent().type == "enemy":
+			direction += (position - area.get_parent().position).normalized()
+	direction = direction.normalized()
 	
+	velocity = velocity.linear_interpolate(direction * SPEED, ACCEL)
 	self.position += velocity*delta
 	look_at(position + velocity)
-	pass

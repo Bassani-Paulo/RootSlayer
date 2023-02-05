@@ -97,7 +97,11 @@ Igor Gabriel Cavalcante de Carvalho Borges <devatdevian@gmail.com>
 
 Lucas Guesser Targino da Silva <lucasguesserts@gmail.com>
 
-Paulo Bassani <bassanipaulo@gmail.com>"
+Paulo Bassani <bassanipaulo@gmail.com>
+
+Fernando Santos <fer20comp@gmail.com>
+
+Nicholas Buck Piovan  <nicholas_piovan@hotmail.com>"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

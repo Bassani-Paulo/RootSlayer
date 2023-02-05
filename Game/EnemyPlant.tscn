@@ -5,11 +5,11 @@
 [ext_resource path="res://Line2D.gd" type="Script" id=3]
 [ext_resource path="res://resources/sprites/tree_log.png" type="Texture" id=4]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 20.0
 height = 42.0
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
@@ -25,7 +25,7 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 75.0
@@ -39,4 +39,4 @@ antialiased = true
 script = ExtResource( 3 )
 
 [node name="Head" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 2 )

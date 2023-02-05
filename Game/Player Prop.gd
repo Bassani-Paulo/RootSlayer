@@ -9,6 +9,7 @@ var animation_tree
 var animation_state_machine
 var axeProp = preload("res://Gun.tscn")
 var axe = null
+var isAtackActivated = false
 
 func _ready():
 	animation_tree = $AnimationTree
@@ -22,10 +23,13 @@ func _process(delta):
 
 	if axe != null and Input.is_action_pressed("attack"):
 		animation_state_machine.travel("AxeUpAttack")
+		$AttackSound.play()
+		isAtackActivated = true
 		axe.hide()
 	else:
 		if axe != null and animation_state_machine.get_current_node() != "AxeUpAttack":
 			axe.show()
+			isAtackActivated = false
 		if Input.is_action_pressed("move_left"):
 			_movement_vector.x = -1
 		if Input.is_action_pressed("move_right"):
@@ -38,8 +42,9 @@ func _process(delta):
 		if _movement_vector == Vector2(0,0):
 			animation_state_machine.travel("Idle")
 		else:
+			_movement_vector = _movement_vector.normalized()
 			animation_state_machine.travel("Move")
-
+		
 		self.position += (_movement_vector.normalized()) * speed * delta
 
 func death_process():
@@ -55,7 +60,7 @@ func _on_Area2D_area_entered(area):
 		death_process()
 	elif  area.get_parent().type == "wall":
 		death_process()
-	elif area.get_parent().type == "root":
+	elif isAtackActivated and area.get_parent().type == "root":
 		$HitSound.play()
 		area.get_parent().get_parent().die()
 	elif area.get_parent().type == "gun":

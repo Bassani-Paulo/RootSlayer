@@ -64,7 +64,7 @@ func _on_Area2D_area_entered(area):
 		death_process()
 	elif isAtackActivated and area.get_parent().type == "root":
 		$HitSound.play()
-		area.get_parent().get_parent().queue_free()
+		area.get_parent().get_parent().die()
 	elif area.get_parent().type == "gun":
 		area.get_parent().queue_free()
 		axe =  axeProp.instance()

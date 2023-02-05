@@ -5,22 +5,42 @@ var gui
 const speed = 360
 const type = "player"
 var teste = 0
-var axe = preload("res://Gun.tscn")
+var animation_tree
+var animation_state_machine
+var axeProp = preload("res://Gun.tscn")
+var axe = null
+
 func _ready():
-	self.get_child(0).animation = "run"
+	animation_tree = $AnimationTree
+	animation_state_machine = $AnimationTree.get("parameters/playback")
+	animation_state_machine.travel("Idle")
 	
 var actual_position = Vector2(0,0)
 
 func _process(delta):
-	change_animation()
-	if Input.is_action_pressed("move_left"):
-		self.position.x -= speed * delta
-	if Input.is_action_pressed("move_right"):
-		self.position.x += speed * delta
-	if Input.is_action_pressed("move_up"):
-		self.position.y -= speed * delta
-	if Input.is_action_pressed("move_down"):
-		self.position.y += speed * delta
+	var _movement_vector = Vector2(0,0)
+
+	if axe != null and Input.is_action_pressed("attack"):
+		animation_state_machine.travel("AxeUpAttack")
+		axe.hide()
+	else:
+		if axe != null and animation_state_machine.get_current_node() != "AxeUpAttack":
+			axe.show()
+		if Input.is_action_pressed("move_left"):
+			_movement_vector.x = -1
+		if Input.is_action_pressed("move_right"):
+			_movement_vector.x = 1
+		if Input.is_action_pressed("move_up"):
+			_movement_vector.y = -1
+		if Input.is_action_pressed("move_down"):
+			_movement_vector.y = 1
+
+		if _movement_vector == Vector2(0,0):
+			animation_state_machine.travel("Idle")
+		else:
+			animation_state_machine.travel("Move")
+
+		self.position += (_movement_vector.normalized()) * speed * delta
 
 func death_process():
 	$DeathSound.play()
@@ -41,16 +61,10 @@ func _on_Area2D_area_entered(area):
 	elif area.get_parent().type == "gun":
 		$HitSound.play()
 		area.get_parent().queue_free()
-		var personal_axe =  axe.instance()
-		add_child(personal_axe)
-		personal_axe.position.x = -400
-		personal_axe.position.y = -400
+		axe =  axeProp.instance()
+		add_child(axe)
+		axe.position.x = -400
+		axe.position.y = -400
 	else:
 		pass
 	
-func change_animation():
-	if self.position != actual_position:
-		actual_position = self.position
-		self.get_child(0).animation = "run"
-	else:
-		self.get_child(0).animation = "idle"

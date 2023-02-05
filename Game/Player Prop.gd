@@ -5,7 +5,6 @@ var gui
 const speed = 360
 const type = "player"
 var teste = 0
-var axe = preload("res://Gun.tscn")
 func _ready():
 	self.get_child(0).animation = "run"
 	
@@ -38,18 +37,20 @@ func _on_Area2D_area_entered(area):
 	elif area.get_parent().type == "root":
 		$HitSound.play()
 		area.get_parent().get_parent().queue_free()
-	elif area.get_parent().type == "gun":
-		area.get_parent().queue_free()
-		var personal_axe =  axe.instance()
-		add_child(personal_axe)
-		personal_axe.position.x = -400
-		personal_axe.position.y = -400
 	else:
 		pass
 	
 func change_animation():
-	if self.position != actual_position:
-		actual_position = self.position
-		self.get_child(0).animation = "run"
+	if Input.is_action_pressed("atack"):
+		self.get_child(0).animation = "atack"
 	else:
-		self.get_child(0).animation = "idle"
+		if self.position != actual_position:
+			actual_position = self.position
+			self.get_child(0).animation = "run"
+		else:
+			pass
+			self.get_child(0).animation = "idle"
+
+
+func _on_Sprite_animation_finished():
+	pass # Replace with function body.

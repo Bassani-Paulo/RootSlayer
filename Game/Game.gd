@@ -4,7 +4,6 @@ extends Node2D
 var enemyPlant = preload("res://EnemyPlant.tscn")
 var playerProp = preload("res://Player Prop.tscn")
 var guiProp = preload("res://GUI.tscn")
-var gunProp = preload("res://Gun.tscn")
 var plants: Array
 var player: Node2D
 
@@ -19,10 +18,7 @@ func _ready():
 	player = playerProp.instance()
 	player.position = Vector2(960, 540)
 	gui = guiProp.instance()
-	var gun = gunProp.instance()
-	gun.position = Vector2(400, 400)
 	player.gui = gui
-	add_child(gun)
 	add_child(player)
 	add_child(gui)
 	

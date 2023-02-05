@@ -30,9 +30,9 @@ func _load_scene(scene_type):
 	back_queue.push_front(current_scene_type)
 	current_scene_type = scene_type
 
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_back"):
-		back()
+#func _unhandled_input(event):
+#	if event.is_action_pressed("ui_back"):
+#		back()
 
 func change_scene(scene_type):
 	if scene_type == Global.SceneType.Quit:

@@ -20,7 +20,12 @@ func _ready():
 	player.position = Vector2(960, 540)
 	gui = guiProp.instance()
 	var gun = gunProp.instance()
-	gun.position = Vector2(400, 400)
+	var rngX = RandomNumberGenerator.new()
+	var rngY = RandomNumberGenerator.new()
+	rngX.randomize()
+	rngY.randomize()
+	gun.global_position = Vector2(rngX.randf_range(100,1820)-454, rngY.randf_range(300,980)-374)
+	print(gun.position)
 	player.gui = gui
 	add_child(gun)
 	add_child(player)

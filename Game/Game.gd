@@ -88,6 +88,7 @@ func buildMap(map):
 #	pass
 
 func _on_PlantSpawnTimer_timeout():
+	get_node("PlantSpawnTimer").wait_time -= 0.01
 	var newPlant = enemyPlant.instance()
 	plants.append(newPlant)
 	var rng = RandomNumberGenerator.new()

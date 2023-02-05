@@ -39,7 +39,7 @@ func parseObject(coord : Vector2, object : String):
 		var instance = scene.instance();
 		self.add_child(instance);
 		instance.position = coord
-		instance.z_index = -1
+		instance.z_index = 1
 		Global.coordToObject[coord] = instance
 	elif object == ' ':
 		var scene = load("res://objects/Grass.tscn");

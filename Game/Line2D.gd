@@ -32,6 +32,6 @@ func _process(delta):
 		area.add_child(colShape)
 		area.position = head.global_position
 		area.look_at(get_parent().PLAYER.position)
-		add_child(area)
+		add_child(area)	
 	current+=1
 	pass

@@ -1,6 +1,7 @@
 extends Node2D
 
 # Declare member variables here. Examples:
+var isAtackActivated = false
 var gui
 const speed = 360
 const type = "player"
@@ -43,8 +44,9 @@ func _on_Area2D_area_entered(area):
 	
 func change_animation():
 	if Input.is_action_pressed("atack"):
+		isAtackActivated = true
 		self.get_child(0).animation = "atack"
-	else:
+	elif isAtackActivated == false:
 		if self.position != actual_position:
 			actual_position = self.position
 			self.get_child(0).animation = "run"
@@ -54,4 +56,6 @@ func change_animation():
 
 
 func _on_Sprite_animation_finished():
-	pass # Replace with function body.
+	if self.get_child(0).animation == "atack":
+		isAtackActivated = false
+

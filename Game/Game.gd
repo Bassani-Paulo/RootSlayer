@@ -16,6 +16,12 @@ var gui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var r = RandomNumberGenerator.new()
+	r.randomize()
+	if r.randi_range(0,1):
+		get_node("AudioStreamPlayer1").play()
+	else:
+		get_node("AudioStreamPlayer2").play()
 	player = playerProp.instance()
 	player.position = Vector2(960, 540)
 	gui = guiProp.instance()

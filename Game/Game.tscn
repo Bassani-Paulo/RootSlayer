@@ -13,4 +13,8 @@ autostart = true
 stream = ExtResource( 2 )
 autoplay = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+
 [connection signal="timeout" from="PlantSpawnTimer" to="." method="_on_PlantSpawnTimer_timeout"]

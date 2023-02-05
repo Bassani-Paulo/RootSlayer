@@ -14,6 +14,9 @@ onready var curLevel = 0
 var needRestart = false
 var gui
 
+onready var camera = $Camera2D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = playerProp.instance()
@@ -78,8 +81,9 @@ func buildMap(map):
 	Global.running = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	camera.position = player.position
+	pass
 
 func _on_PlantSpawnTimer_timeout():
 	var newPlant = enemyPlant.instance()

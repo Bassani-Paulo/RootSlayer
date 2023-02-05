@@ -1,0 +1,151 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/label_HP_bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 15
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 4 )
+
+[node name="GUI" type="CanvasLayer"]
+offset = Vector2( 70, -10 )
+scale = Vector2( 0.8, 0.8 )
+transform = Transform2D( 0.8, 0, 0, 0.8, 70, -10 )
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+anchor_right = 1.0
+margin_right = -920.0
+margin_bottom = 119.0
+rect_scale = Vector2( 2, 2 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="Control/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 980.0
+margin_bottom = 99.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 8, 21, 100.591, 18.3333 )
+patch_margin_left = 10
+patch_margin_right = 10
+patch_margin_bottom = 44
+
+[node name="Elements" type="MarginContainer" parent="Control/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 980.0
+margin_bottom = 99.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Elements"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 950.0
+margin_bottom = 69.0
+
+[node name="HBoxLeft" type="HBoxContainer" parent="Control/MarginContainer/Elements/HBoxContainer"]
+margin_right = 468.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+
+[node name="VBoxLevelInfo2" type="VBoxContainer" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft"]
+margin_right = 468.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 3
+
+[node name="LevelPackLabel" type="Label" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft/VBoxLevelInfo2"]
+margin_right = 468.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Current Record"
+align = 1
+valign = 1
+
+[node name="LevelNameContainer" type="MarginContainer" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft/VBoxLevelInfo2"]
+margin_top = 23.0
+margin_right = 468.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxLeft/VBoxLevelInfo2/LevelNameContainer"]
+margin_right = 468.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="HBoxMiddle" type="HBoxContainer" parent="Control/MarginContainer/Elements/HBoxContainer"]
+margin_left = 472.0
+margin_right = 940.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxLevelInfo" type="VBoxContainer" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle"]
+margin_right = 468.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 3
+
+[node name="LevelPackLabel" type="Label" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle/VBoxLevelInfo"]
+margin_right = 468.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Best Record"
+align = 1
+valign = 1
+
+[node name="LevelNameContainer" type="MarginContainer" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle/VBoxLevelInfo"]
+margin_top = 23.0
+margin_right = 468.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="Control/MarginContainer/Elements/HBoxContainer/HBoxMiddle/VBoxLevelInfo/LevelNameContainer"]
+margin_right = 468.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1

@@ -9,7 +9,6 @@ var animation_tree
 var animation_state_machine
 var axeProp = preload("res://Gun.tscn")
 var axe = null
-var isAtackActivated = false
 
 func _ready():
 	animation_tree = $AnimationTree
@@ -24,12 +23,9 @@ func _process(delta):
 	if axe != null and Input.is_action_pressed("attack"):
 		animation_state_machine.travel("AxeUpAttack")
 		axe.hide()
-		$AttackSound.play()
-		isAtackActivated = true
 	else:
-		if isAtackActivated and animation_state_machine.get_current_node() != "AxeUpAttack":
+		if axe != null and animation_state_machine.get_current_node() != "AxeUpAttack":
 			axe.show()
-			isAtackActivated = false
 		if Input.is_action_pressed("move_left"):
 			_movement_vector.x = -1
 		if Input.is_action_pressed("move_right"):
@@ -38,14 +34,11 @@ func _process(delta):
 			_movement_vector.y = -1
 		if Input.is_action_pressed("move_down"):
 			_movement_vector.y = 1
-		
+
 		if _movement_vector == Vector2(0,0):
 			animation_state_machine.travel("Idle")
 		else:
-			_movement_vector = _movement_vector.normalized()
 			animation_state_machine.travel("Move")
-			if isAtackActivated:
-				_movement_vector /= 4
 
 		self.position += (_movement_vector.normalized()) * speed * delta
 
@@ -62,10 +55,11 @@ func _on_Area2D_area_entered(area):
 		death_process()
 	elif  area.get_parent().type == "wall":
 		death_process()
-	elif isAtackActivated and area.get_parent().type == "root":
+	elif area.get_parent().type == "root":
 		$HitSound.play()
 		area.get_parent().get_parent().die()
 	elif area.get_parent().type == "gun":
+		$HitSound.play()
 		area.get_parent().queue_free()
 		axe =  axeProp.instance()
 		add_child(axe)
@@ -73,3 +67,4 @@ func _on_Area2D_area_entered(area):
 		axe.position.y = -400
 	else:
 		pass
+	

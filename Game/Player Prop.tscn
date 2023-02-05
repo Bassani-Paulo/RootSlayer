@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player Prop.gd" type="Script" id=1]
 [ext_resource path="res://resources/sprites/lumberjack/front_idle.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://resources/sprites/lumberjack/front_up_attack2_axe.png" type="Texture" id=6]
 [ext_resource path="res://sounds/lenhador morrendo.wav" type="AudioStream" id=7]
 [ext_resource path="res://sounds/lenhador ataque hit.wav" type="AudioStream" id=8]
-[ext_resource path="res://sounds/lenhador ataque.wav" type="AudioStream" id=9]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "AxeUpAttack"
@@ -115,10 +114,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.02, 0.22, 0.42, 0.62, 0.82 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ]
+"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ) ]
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Sprite:scale:x")
@@ -127,8 +126,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0.025, -0.25, 0, 0, 0.00850871, 0.0248822, -0.08, 0.000114236, 0.04, 0, 0.0248822, -0.25, 0, 0, 0.00899281, 0.0248822, -0.08, -1.82446e-05, 0.25, 0, 0.025, -0.25, 0, 0, 0.00850871 ),
-"times": PoolRealArray( 0.02, 0.12, 0.42, 0.52, 0.82 )
+"points": PoolRealArray( 0.025, -0.25, 0, 0, 0.00850871, 0.0248822, -0.08, 0.000114236, 0.04, 0, 0.0248822, -0.25, 0, 0, 0.00899281, 0.0248822, -0.08, -1.82446e-05, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 0.3, 0.6, 0.7 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Sprite:scale:y")
@@ -137,8 +136,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 0.0249523, -0.1, -4.41596e-05, 0, 0.00527898, 0.0249523, -0.0763213, 0, 0.25, 0, 0.0248554, -0.04, -0.00013186, 0, 0.00527447, 0.0248554, -0.08, -0.00013186, 0.25, 0, 0.0249523, -0.1, -4.41596e-05, 0, 0.00527898 ),
-"times": PoolRealArray( 0.02, 0.12, 0.42, 0.52, 0.82 )
+"points": PoolRealArray( 0.025, -0.25, 0, 0.14, 4.05852e-05, 0.0249523, -0.1, -4.41596e-05, 0, 0.00527898, 0.0249523, -0.0763213, 0, 0.25, 0, 0.0248554, -0.04, -0.00013186, 0, 0.00527447, 0.0248554, -0.08, -0.00013186, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.296321, 0.6, 0.7 )
 }
 
 [sub_resource type="Animation" id=14]
@@ -231,6 +230,4 @@ stream = ExtResource( 7 )
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 
-[node name="AttackSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

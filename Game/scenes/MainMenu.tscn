@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://styles/style_button_hover.tres" type="StyleBox" id=1]
 [ext_resource path="res://resources/sprites/mainmenu_concept.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://styles/style_button_pressed.tres" type="StyleBox" id=4]
 [ext_resource path="res://styles/font_button.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://styles/font_main_title.tres" type="DynamicFont" id=7]
 
 [sub_resource type="StyleBoxLine" id=2]
 color = Color( 1, 1, 1, 1 )
@@ -69,6 +70,20 @@ custom_styles/pressed = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
 text = "Exit"
 
+[node name="Credits Text" type="RichTextLabel" parent="."]
+margin_right = 1922.0
+margin_bottom = 761.0
+custom_fonts/normal_font = ExtResource( 7 )
+text = "This game has been developed by an amazing team composed by:
+
+Renan Fernando Franco da Silva <renanfernandofranco@gmail.com>
+
+Igor Gabriel Cavalcante de Carvalho Borges <devatdevian@gmail.com>
+
+Lucas Guesser Targino da Silva <lucasguesserts@gmail.com>
+
+Paulo Bassani <bassanipaulo@gmail.com>"
+
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

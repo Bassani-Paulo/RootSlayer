@@ -1,23 +1,15 @@
-extends MarginContainer
+extends Node2D
 
 signal change_scene(scene_type)
 
-var _version
-
 func _ready():
-	var file = File.new()
-	file.open("res://version.txt", File.READ)
-	_version = file.get_line()
-	file.close()
-	$VBoxContainer/VersionLabel.text = 'v' + _version
-	$VBoxContainer/HBoxContainer/MenuContainer/VBoxContainer/Play.grab_focus()
-
+	$"Credits Text".visible = false
 
 func _on_Exit_pressed():
-	emit_signal("change_scene", Global.SceneType.Quit)
+	get_tree().quit(0)
 
-func _on_Help_pressed():
-	emit_signal("change_scene", Global.SceneType.Help)
+func _on_Credits_pressed():
+	$"Credits Text".visible = not $"Credits Text".visible
 
 func _on_Play_pressed():
-	emit_signal("change_scene", Global.SceneType.SelectLevel)
+	emit_signal("change_scene", Global.SceneType.Game)

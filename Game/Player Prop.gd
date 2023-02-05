@@ -1,6 +1,7 @@
 extends Node2D
 
 # Declare member variables here. Examples:
+var gui
 const speed = 360
 const type = "player"
 var teste = 0
@@ -23,6 +24,7 @@ func _process(delta):
 
 func death_process():
 	$DeathSound.play()
+	gui.set_best_time()
 	get_tree().paused = true
 	yield(get_tree().create_timer(1), "timeout")
 	get_tree().paused = false

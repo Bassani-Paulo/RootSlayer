@@ -3,6 +3,7 @@ extends Node2D
 # Declare member variables here. Examples:
 var enemyPlant = preload("res://EnemyPlant.tscn")
 var playerProp = preload("res://Player Prop.tscn")
+var guiProp = preload("res://GUI.tscn")
 var gunProp = preload("res://Gun.tscn")
 var plants: Array
 var player: Node2D
@@ -11,23 +12,22 @@ const sizeGrid = Global.movementLength
 var offset : Vector2
 onready var curLevel = 0
 var needRestart = false
+var gui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = playerProp.instance()
 	player.position = Vector2(960, 540)
+	gui = guiProp.instance()
 	var gun = gunProp.instance()
 	gun.position = Vector2(400, 400)
+	player.gui = gui
 	add_child(gun)
 	add_child(player)
+	add_child(gui)
 	
 	var baseMapName = "map1"
 	var mapFile = loadFile("res://maps/" + baseMapName + ".txt")
-	var lines = mapFile.split("\n",false)
-	var rows = lines.size()
-	var cols = lines[0].length()
-	var rect = get_viewport_rect()
-	offset = Vector2.ZERO
 	
 	buildMap(mapFile)
 
@@ -75,7 +75,6 @@ func buildMap(map):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
 
 func _on_PlantSpawnTimer_timeout():
 	var newPlant = enemyPlant.instance()

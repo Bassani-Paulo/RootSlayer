@@ -11,24 +11,26 @@ var axeProp = preload("res://Gun.tscn")
 var axe = null
 var isAtackActivated = false
 
+var gamba = 100
+
 func _ready():
 	animation_tree = $AnimationTree
 	animation_state_machine = $AnimationTree.get("parameters/playback")
 	animation_state_machine.travel("Idle")
+	z_index = 1
 	
 var actual_position = Vector2(0,0)
 
 func _process(delta):
 	var _movement_vector = Vector2(0,0)
-
 	if axe != null and Input.is_action_pressed("attack"):
 		animation_state_machine.travel("AxeUpAttack")
 		axe.hide()
+		get_node("Timer").start()
 		$AttackSound.play()
 		isAtackActivated = true
 	else:
 		if isAtackActivated and animation_state_machine.get_current_node() != "AxeUpAttack":
-			axe.show()
 			isAtackActivated = false
 		if Input.is_action_pressed("move_left"):
 			_movement_vector.x = -1
@@ -65,11 +67,17 @@ func _on_Area2D_area_entered(area):
 	elif isAtackActivated and area.get_parent().type == "root":
 		$HitSound.play()
 		area.get_parent().get_parent().die()
-	elif area.get_parent().type == "gun":
+	elif axe == null && area.get_parent().type == "gun":
 		area.get_parent().queue_free()
-		#axe =  axeProp.instance()
-		#add_child(axe)
-		#axe.position.x = -400
-		#axe.position.y = -400
+		axe =  axeProp.instance()
+		add_child(axe)
+		axe.position.x = -440
+		axe.position.y = -400
+		get_node("Sprite").z_index = 1
 	else:
 		pass
+
+
+func _on_Timer_timeout():
+	axe.show()
+	pass # Replace with function body.

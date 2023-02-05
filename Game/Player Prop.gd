@@ -43,7 +43,7 @@ func _on_Area2D_area_entered(area):
 		pass
 	
 func change_animation():
-	if Input.is_action_pressed("atack"):
+	if Input.is_action_just_pressed("atack"):
 		isAtackActivated = true
 		self.get_child(0).animation = "atack"
 	elif isAtackActivated == false:

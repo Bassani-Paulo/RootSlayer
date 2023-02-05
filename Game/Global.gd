@@ -4,7 +4,7 @@ var coordToObject = {}
 
 const movementLength : int = 32
 
-enum SceneType {SelectPack, Help, Quit, Main, SelectLevel, Game, Game2}
+enum SceneType {Quit, Main, Game, Credits}
 
 var running = false
 var finished = 0

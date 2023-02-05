@@ -12,5 +12,4 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
-
 [connection signal="timeout" from="PlantSpawnTimer" to="." method="_on_PlantSpawnTimer_timeout"]

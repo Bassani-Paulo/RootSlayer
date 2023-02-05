@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://styles/style_button_hover.tres" type="StyleBox" id=1]
+[ext_resource path="res://styles/font_main_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://styles/style_button_normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://styles/style_button_pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://styles/font_button.tres" type="DynamicFont" id=5]
+[ext_resource path="res://MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_right = 1840.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Root Slayer"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 1840.0
+margin_bottom = 464.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 1840.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 150
+custom_constants/margin_top = 120
+custom_constants/margin_left = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MenuContainer"]
+margin_left = 150.0
+margin_top = 120.0
+margin_right = 1690.0
+margin_bottom = 380.0
+custom_constants/separation = 10
+
+[node name="Play" type="Button" parent="VBoxContainer/HBoxContainer/MenuContainer/VBoxContainer"]
+margin_right = 1540.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "Play"
+
+[node name="Credits" type="Button" parent="VBoxContainer/HBoxContainer/MenuContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 1540.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "Credits"
+
+[node name="Exit" type="Button" parent="VBoxContainer/HBoxContainer/MenuContainer/VBoxContainer"]
+margin_top = 180.0
+margin_right = 1540.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "Exit"
+
+[node name="VersionLabel" type="Label" parent="VBoxContainer"]
+margin_top = 468.0
+margin_right = 1840.0
+margin_bottom = 1000.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 1 )
+text = "v0"
+align = 2
+valign = 2
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuContainer/VBoxContainer/Credits" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

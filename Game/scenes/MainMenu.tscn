@@ -101,7 +101,9 @@ Paulo Bassani <bassanipaulo@gmail.com>
 
 Fernando Santos <fer20comp@gmail.com>
 
-Nicholas Buck Piovan  <nicholas_piovan@hotmail.com>"
+Nicholas Buck Piovan  <nicholas_piovan@hotmail.com>
+
+Fernando Santos <fer20comp@gmail.com>"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

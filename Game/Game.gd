@@ -92,7 +92,10 @@ func _process(delta):
 	pass
 
 func _on_PlantSpawnTimer_timeout():
-	get_node("PlantSpawnTimer").wait_time -= 0.01
+	if get_node("PlantSpawnTimer").wait_time < 0.05:
+		get_node("PlantSpawnTimer").wait_time = 0.05
+	else:
+		get_node("PlantSpawnTimer").wait_time -= 0.01
 	var newPlant = enemyPlant.instance()
 	plants.append(newPlant)
 	var rng = RandomNumberGenerator.new()

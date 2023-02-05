@@ -2,6 +2,7 @@ extends Node2D
 
 # Declare member variables here. Examples:
 var enemyPlant = preload("res://EnemyPlant.tscn")
+var straightPlant = preload("res://StraightPlant.tscn")
 var playerProp = preload("res://Player Prop.tscn")
 var guiProp = preload("res://GUI.tscn")
 var gunProp = preload("res://Gun.tscn")
@@ -77,7 +78,7 @@ func buildMap(map):
 #	pass
 
 func _on_PlantSpawnTimer_timeout():
-	var newPlant = enemyPlant.instance()
+	var newPlant = straightPlant.instance()
 	plants.append(newPlant)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

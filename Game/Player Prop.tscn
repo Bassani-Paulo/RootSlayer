@@ -229,4 +229,5 @@ stream = ExtResource( 7 )
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

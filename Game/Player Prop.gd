@@ -57,7 +57,7 @@ func _on_Area2D_area_entered(area):
 		death_process()
 	elif area.get_parent().type == "root":
 		$HitSound.play()
-		area.get_parent().get_parent().queue_free()
+		area.get_parent().get_parent().die()
 	elif area.get_parent().type == "gun":
 		$HitSound.play()
 		area.get_parent().queue_free()

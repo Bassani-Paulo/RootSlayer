@@ -35,8 +35,9 @@ func _on_Area2D_area_entered(area):
 	elif  area.get_parent().type == "wall":
 		death_process()
 	elif area.get_parent().type == "root":
-		$HitSound.play()
-		area.get_parent().get_parent().queue_free()
+		if self.get_child(0).animation == "atack":
+			$HitSound.play()
+			area.get_parent().get_parent().queue_free()
 	else:
 		pass
 	

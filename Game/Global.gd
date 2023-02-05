@@ -14,3 +14,7 @@ var maxL = 0
 var curH = 0
 var curL = 0
 var timeRunning = 0
+var best_time = 0
+
+func _ready():
+	pass

@@ -14,7 +14,6 @@ func _ready():
 	get_node("Line2D").head = get_node("Head")
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var overlapingAreas = get_node("Area2D").get_overlapping_areas()

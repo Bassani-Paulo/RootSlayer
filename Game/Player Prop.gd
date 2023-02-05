@@ -67,10 +67,9 @@ func _on_Area2D_area_entered(area):
 		area.get_parent().get_parent().die()
 	elif area.get_parent().type == "gun":
 		area.get_parent().queue_free()
-		axe =  axeProp.instance()
-		add_child(axe)
-		axe.scale /= 2
-		axe.position.x = -400
-		axe.position.y = -400
+		#axe =  axeProp.instance()
+		#add_child(axe)
+		#axe.position.x = -400
+		#axe.position.y = -400
 	else:
 		pass

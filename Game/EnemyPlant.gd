@@ -5,7 +5,7 @@ const ACCEL = 0.025
 const type = "enemy"
 var PLAYER: Node2D
 var playerPosition: Vector2
-const SPEED = 240
+const SPEED = 300
 var isDying = false
 var oppacity = 1
 

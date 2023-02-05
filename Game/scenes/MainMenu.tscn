@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/sprites/mainmenu.png" type="Texture" id=1]
+[ext_resource path="res://resources/sprites/credits.png" type="Texture" id=2]
 [ext_resource path="res://styles/font_button.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=6]
 [ext_resource path="res://styles/font_main_title.tres" type="DynamicFont" id=7]
@@ -101,6 +102,11 @@ Paulo Bassani <bassanipaulo@gmail.com>"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+
+[node name="Credits2" type="Sprite" parent="."]
+position = Vector2( 290, 822 )
+scale = Vector2( 0.241211, 0.229492 )
+texture = ExtResource( 2 )
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
